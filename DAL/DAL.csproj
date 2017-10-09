@@ -47,16 +47,28 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Abstract\ICountryRepository.cs" />
+    <Compile Include="Abstract\IEFContext.cs" />
+    <Compile Include="Concrete\CountryRepository.cs" />
     <Compile Include="Entities\City.cs" />
     <Compile Include="Entities\Country.cs" />
     <Compile Include="Entities\DBInitializer.cs" />
     <Compile Include="Entities\EFContext.cs" />
+    <Compile Include="Migrations\201710091613382_Create table Country and City.cs" />
+    <Compile Include="Migrations\201710091613382_Create table Country and City.Designer.cs">
+      <DependentUpon>201710091613382_Create table Country and City.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201710091613382_Create table Country and City.resx">
+      <DependentUpon>201710091613382_Create table Country and City.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

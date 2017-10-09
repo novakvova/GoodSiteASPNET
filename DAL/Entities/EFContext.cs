@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DAL.Abstract;
+using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
@@ -7,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace DAL.Entities
 {
-    public class EFContext : DbContext
+    public class EFContext : DbContext, IEFContext
     {
         public EFContext() : base("TourConnection")
         {
@@ -17,6 +18,13 @@ namespace DAL.Entities
             :base(connString)
         {
             Database.SetInitializer<EFContext>(new DBInitializer());
+        }
+        public DbSet<Country> Countries { get; set; }
+        public DbSet<City> Cities { get; set; }
+
+        public new IDbSet<TEntity> Set<TEntity>() where TEntity : class 
+        {
+            return base.Set<TEntity>();
         }
     }
 }
