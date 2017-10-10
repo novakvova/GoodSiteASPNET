@@ -32,6 +32,12 @@ namespace DAL.Concrete
             return this._context.Set<Country>();
         }
 
+        public Country GetCountryByName(string name)
+        {
+            return this.GetAllCountries()
+                .SingleOrDefault(c=>c.Name==name);
+        }
+
         public void SaveChange()
         {
             this._context.SaveChanges();

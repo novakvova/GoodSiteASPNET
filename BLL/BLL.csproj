@@ -44,6 +44,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Abstract\ILocationProvider.cs" />
+    <Compile Include="Concrete\DataModule.cs" />
     <Compile Include="Concrete\LocationProvider.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewModel\CountryViewModel.cs" />

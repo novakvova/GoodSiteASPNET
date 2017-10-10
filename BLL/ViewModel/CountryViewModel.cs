@@ -18,4 +18,9 @@ namespace BLL.ViewModel
         public string Name { get; set; }
         public int Priority { get; set; }
     }
+    public enum StatusCountryViewModel
+    {
+        Success = 0,
+        Dublication = 1
+    }
 }

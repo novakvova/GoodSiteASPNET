@@ -11,6 +11,7 @@ namespace DAL.Abstract
     {
         Country Add(Country country);
         IQueryable<Country> GetAllCountries();
+        Country GetCountryByName(string name);
         void SaveChange();
     }
 }

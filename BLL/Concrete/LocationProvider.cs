@@ -17,8 +17,12 @@ namespace BLL.Concrete
         {
             _countryRepository = countryRepository;
         }
-        public int AddCountry(AddCountryViewModel addCountry)
+        public StatusCountryViewModel AddCountry(AddCountryViewModel addCountry)
         {
+            var searchCountry = _countryRepository.GetCountryByName(addCountry.Name);
+            if (searchCountry != null)
+                return StatusCountryViewModel.Dublication;
+
             Country country = new Country {
                 Name=addCountry.Name,
                 DateCreate=DateTime.Now,
@@ -26,7 +30,8 @@ namespace BLL.Concrete
             };
             _countryRepository.Add(country);
             _countryRepository.SaveChange();
-            return country.Id;
+            
+            return StatusCountryViewModel.Success;
         }
 
         public IEnumerable<CountryViewModel> Countries()

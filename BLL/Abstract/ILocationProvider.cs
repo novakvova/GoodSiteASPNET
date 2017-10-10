@@ -9,7 +9,7 @@ namespace BLL.Abstract
 {
     public interface ILocationProvider
     {
-        int AddCountry(AddCountryViewModel addCountry);
+        StatusCountryViewModel AddCountry(AddCountryViewModel addCountry);
         IEnumerable<CountryViewModel> Countries(); 
     }
 }
