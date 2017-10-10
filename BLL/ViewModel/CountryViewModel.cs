@@ -13,14 +13,21 @@ namespace BLL.ViewModel
         public DateTime DateCreate { get; set; }
         public int Priority { get; set; }
     }
-    public class AddCountryViewModel
+    public class CountryAddViewModel
     {
+        public string Name { get; set; }
+        public int Priority { get; set; }
+    }
+    public class CountryEditViewModel
+    {
+        public int Id { get; set; }
         public string Name { get; set; }
         public int Priority { get; set; }
     }
     public enum StatusCountryViewModel
     {
         Success = 0,
-        Dublication = 1
+        Dublication = 1,
+        Error=2
     }
 }
