@@ -47,6 +47,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Abstract\ICityRepository.cs" />
     <Compile Include="Abstract\ICountryRepository.cs" />
     <Compile Include="Abstract\IEFContext.cs" />
     <Compile Include="Concrete\CountryRepository.cs" />

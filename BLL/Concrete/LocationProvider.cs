@@ -35,9 +35,15 @@ namespace BLL.Concrete
             return StatusCountryViewModel.Success;
         }
 
-        public IEnumerable<CountryViewModel> Countries()
+        public IEnumerable<CountryViewModel> Countries(int page)
         {
-            var countries = _countryRepository.GetAllCountries()
+            int pageSize = 10;
+            int pageNo = page - 1;
+            var countries = _countryRepository
+                .GetAllCountries()
+                .OrderBy(c => c.Id)
+                .Skip(pageNo * pageSize)
+                .Take(pageSize)
                 .Select(c => new CountryViewModel
                 {
                     Id = c.Id,
@@ -64,7 +70,7 @@ namespace BLL.Concrete
                     return StatusCountryViewModel.Success;
                 }
             }
-            catch {  }
+            catch { }
             return StatusCountryViewModel.Error;
         }
 

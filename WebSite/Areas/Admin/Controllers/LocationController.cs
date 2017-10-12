@@ -16,49 +16,6 @@ namespace WebSite.Areas.Admin.Controllers
             _locationProvider = locationProvider;
         }
         // GET: Admin/Location
-        public ActionResult Index()
-        {
-            var model = _locationProvider.Countries();
-            return View(model);
-        }
-        public ActionResult Create()
-        {
-            return View();
-        }
-        [ValidateAntiForgeryToken]
-        [HttpPost]
-        public ActionResult Create(CountryAddViewModel country)
-        {
-            if(ModelState.IsValid)
-            {
-                var status=_locationProvider.CountryAdd(country);
-                if (status == StatusCountryViewModel.Success)
-                    return RedirectToAction("Index");
-                else if (status == StatusCountryViewModel.Dublication)
-                    ModelState.AddModelError("", "Країна за даним іменем уже існує!");
-            }
-            return View(country);
-        }
-        public ActionResult Edit(int id)
-        {
-            var model = _locationProvider.GetCountryEditById(id);
-            return View(model);
-        }
-        [ValidateAntiForgeryToken]
-        [HttpPost]
-        public ActionResult Edit(CountryEditViewModel country)
-        {
-            if (ModelState.IsValid)
-            {
-                var status = _locationProvider.CountryEdit(country);
-                if (status == StatusCountryViewModel.Success)
-                    return RedirectToAction("Index");
-                else if (status == StatusCountryViewModel.Dublication)
-                    ModelState.AddModelError("", "Країна за даним іменем уже існує!");
-                else if(status==StatusCountryViewModel.Error)
-                    ModelState.AddModelError("", "Помилка редагування");
-            }
-            return View(country);
-        }
+        
     }
 }
