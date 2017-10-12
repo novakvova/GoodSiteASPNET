@@ -35,23 +35,28 @@ namespace BLL.Concrete
             return StatusCountryViewModel.Success;
         }
 
-        public IEnumerable<CountryViewModel> Countries(int page)
+        public CountryViewModel Countries(int page)
         {
             int pageSize = 10;
             int pageNo = page - 1;
-            var countries = _countryRepository
+            CountryViewModel model = new CountryViewModel();
+
+            model.Countries = _countryRepository
                 .GetAllCountries()
                 .OrderBy(c => c.Id)
                 .Skip(pageNo * pageSize)
                 .Take(pageSize)
-                .Select(c => new CountryViewModel
+                .Select(c => new CountryItemViewModel
                 {
                     Id = c.Id,
                     Name = c.Name,
                     DateCreate = c.DateCreate,
                     Priority = c.Priority
                 });
-            return countries.AsEnumerable();
+            int count=_countryRepository.TotalCountries();
+            model.TotalPage = (int)Math.Ceiling((double)count/pageSize);
+            model.CurrentPage = page;
+            return model;
         }
 
         public StatusCountryViewModel CountryEdit(CountryEditViewModel editCountry)

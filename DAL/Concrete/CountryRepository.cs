@@ -48,5 +48,10 @@ namespace DAL.Concrete
         {
             this._context.SaveChanges();
         }
+
+        public int TotalCountries()
+        {
+            return this.GetAllCountries().Count();
+        }
     }
 }
