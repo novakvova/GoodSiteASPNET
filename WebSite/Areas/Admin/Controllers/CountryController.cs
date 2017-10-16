@@ -16,9 +16,9 @@ namespace WebSite.Areas.Admin.Controllers
             _locationProvider = locationProvider;
         }
         // GET: Admin/Location
-        public ActionResult Index(int page=1)
+        public ActionResult Index(SearchCountryViewModel search, int page = 1)
         {
-            var model = _locationProvider.Countries(page);
+            var model = _locationProvider.Countries(page, search);
             return View(model);
         }
         public ActionResult Create()

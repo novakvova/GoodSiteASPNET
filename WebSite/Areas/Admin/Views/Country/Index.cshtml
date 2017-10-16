@@ -7,17 +7,23 @@
 <h2>Index</h2>
 
 <p>
+    @Html.Partial("_Search", Model.Search)
+</p>
+
+<p>
     @Html.ActionLink("Create New", "Create")
 </p>
 
 @Html.Partial("_Countries", Model.Countries)
 
 @{
-    string links = Html.PageLinks(Model.CurrentPage, 
-        Model.TotalPage, 
-        x => Url.Action("Index","Country", new
-    {
-        page=x
-    }));
+    string links = Html.PageLinks(Model.CurrentPage,
+        Model.TotalPage,
+        x => Url.Action("Index", "Country", new
+        {
+            page = x,
+            Name = Model.Search.Name,
+            Priority = Model.Search.Priority
+        }));
 }
 @Html.Raw(links)

@@ -225,6 +225,7 @@
     <Content Include="Areas\Admin\Views\Country\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\Country\Index.cshtml" />
     <Content Include="Areas\Admin\Views\Country\_Countries.cshtml" />
+    <Content Include="Areas\Admin\Views\Country\_Search.cshtml" />
     <None Include="Scripts\jquery-3.2.1.intellisense.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />

@@ -35,14 +35,25 @@ namespace BLL.Concrete
             return StatusCountryViewModel.Success;
         }
 
-        public CountryViewModel Countries(int page)
+        public CountryViewModel Countries(int page, SearchCountryViewModel search)
         {
-            int pageSize = 10;
+            int pageSize = 1;
             int pageNo = page - 1;
             CountryViewModel model = new CountryViewModel();
 
-            model.Countries = _countryRepository
-                .GetAllCountries()
+            var query = _countryRepository
+                .GetAllCountries();
+            if(!string.IsNullOrEmpty(search.Name))
+            {
+                query = query.Where(c => c.Name.Contains(search.Name));
+            }
+            if (!string.IsNullOrEmpty(search.Priority))
+            {
+                int priority;
+                int.TryParse(search.Priority, out priority);
+                query = query.Where(c => c.Priority==priority);
+            }
+            model.Countries = query
                 .OrderBy(c => c.Id)
                 .Skip(pageNo * pageSize)
                 .Take(pageSize)
@@ -53,9 +64,10 @@ namespace BLL.Concrete
                     DateCreate = c.DateCreate,
                     Priority = c.Priority
                 });
-            int count=_countryRepository.TotalCountries();
+            int count=query.Count();
             model.TotalPage = (int)Math.Ceiling((double)count/pageSize);
             model.CurrentPage = page;
+            model.Search = search;
             return model;
         }
 

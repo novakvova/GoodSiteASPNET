@@ -10,7 +10,7 @@ namespace BLL.Abstract
     public interface ILocationProvider
     {
         StatusCountryViewModel CountryAdd(CountryAddViewModel addCountry);
-        CountryViewModel Countries(int page);
+        CountryViewModel Countries(int page, SearchCountryViewModel search);
         StatusCountryViewModel CountryEdit(CountryEditViewModel editCountry);
         CountryEditViewModel GetCountryEditById(int id);
     }
