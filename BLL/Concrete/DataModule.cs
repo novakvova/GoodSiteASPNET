@@ -26,6 +26,13 @@ namespace BLL.Concrete
                 .As<ICountryRepository>().InstancePerRequest();
             builder.RegisterType<LocationProvider>()
                 .As<ILocationProvider>().InstancePerRequest();
+            builder.RegisterType<UserRepository>()
+                .As<IUserRepository>().InstancePerRequest();
+            builder.RegisterType<AccountProvider>()
+                .As<IAccountProvider>().InstancePerRequest();
+            
+
+
             base.Load(builder);
         }
     }

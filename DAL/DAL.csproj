@@ -48,16 +48,24 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Abstract\ICityRepository.cs" />
+    <Compile Include="Abstract\IUserRepository.cs" />
     <Compile Include="Abstract\ICountryRepository.cs" />
     <Compile Include="Abstract\IEFContext.cs" />
+    <Compile Include="Concrete\UserRepository.cs" />
     <Compile Include="Concrete\CountryRepository.cs" />
     <Compile Include="Entities\City.cs" />
     <Compile Include="Entities\Country.cs" />
     <Compile Include="Entities\DBInitializer.cs" />
     <Compile Include="Entities\EFContext.cs" />
+    <Compile Include="Entities\Role.cs" />
+    <Compile Include="Entities\User.cs" />
     <Compile Include="Migrations\201710091613382_Create table Country and City.cs" />
     <Compile Include="Migrations\201710091613382_Create table Country and City.Designer.cs">
       <DependentUpon>201710091613382_Create table Country and City.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201710171625032_Create tables Users and Roles.cs" />
+    <Compile Include="Migrations\201710171625032_Create tables Users and Roles.Designer.cs">
+      <DependentUpon>201710171625032_Create tables Users and Roles.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -69,6 +77,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201710091613382_Create table Country and City.resx">
       <DependentUpon>201710091613382_Create table Country and City.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201710171625032_Create tables Users and Roles.resx">
+      <DependentUpon>201710171625032_Create tables Users and Roles.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
