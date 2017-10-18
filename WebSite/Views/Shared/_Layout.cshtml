@@ -33,7 +33,8 @@
                     }
                     else
                     {
-                        <li>@Html.ActionLink("Вхід", "Login", "Account")</li>
+                        <li><a data-toggle="modal" data-target="#loginModal">Login</a></li>
+                        @*<li>@Html.ActionLink("Вхід", "Login", "Account")</li>*@
                         <li>@Html.ActionLink("Реєстрація", "Register", "Account")</li>
                     }
                 </ul>
@@ -48,8 +49,14 @@
         </footer>
     </div>
 
+    @Html.Partial("_LoginPopup")
+
+
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
+    <script src="~/Scripts/Account/loginPopup.js"></script>
+
+
     @RenderSection("scripts", required: false)
 </body>
 </html>

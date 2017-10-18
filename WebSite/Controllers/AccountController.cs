@@ -1,5 +1,6 @@
 ﻿using BLL.Abstract;
 using BLL.ViewModel;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,7 +10,7 @@ using System.Web.Security;
 
 namespace WebSite.Controllers
 {
-   
+
     public class AccountController : Controller
     {
         private readonly IAccountProvider _accountProvider;
@@ -27,7 +28,7 @@ namespace WebSite.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Login(LoginViewModel model)
         {
-            if(ModelState.IsValid)
+            if (ModelState.IsValid)
             {
                 var status = _accountProvider.Login(model);
                 if (status == StatusAccountViewModel.Success)
@@ -47,9 +48,9 @@ namespace WebSite.Controllers
         [HttpPost]
         public ActionResult Register(RegisterViewModel model)
         {
-            if(ModelState.IsValid)
+            if (ModelState.IsValid)
             {
-                var status=_accountProvider.Register(model);
+                var status = _accountProvider.Register(model);
                 if (status == StatusAccountViewModel.Success)
                     return RedirectToAction("Login");
                 else if (status == StatusAccountViewModel.Dublication)
@@ -62,5 +63,33 @@ namespace WebSite.Controllers
             _accountProvider.Logout();
             return RedirectToAction("Index", "Home");
         }
+
+        #region AJAX
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ContentResult LoginPopup(LoginViewModel model)
+        {
+            string json="";  int rez = 0;  string message = "";
+            if (ModelState.IsValid)
+            {
+                var status = _accountProvider.Login(model);
+                if (status == StatusAccountViewModel.Success)
+                {
+                    message="Усе добре";
+                    rez = 1;
+                }
+                else
+                    message= "Не коректні дані!";
+            }
+            message = "Валідація";
+            json = JsonConvert.SerializeObject(new
+            {
+                rez=rez,
+                message=message
+            });
+            return Content(json,"application/json");
+        }
+
+        #endregion
     }
 }
