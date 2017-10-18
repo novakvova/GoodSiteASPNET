@@ -9,23 +9,13 @@ using System.Web.Security;
 
 namespace WebSite.Controllers
 {
-    class DBUser
-    {
-        public string Email { get; set; }
-        public string Password { get; set; }
-    }
+   
     public class AccountController : Controller
     {
         private readonly IAccountProvider _accountProvider;
-        private static List<DBUser> _listUsers;
         public AccountController(IAccountProvider accountProvider)
         {
             _accountProvider = accountProvider;
-            _listUsers = new List<DBUser>
-            {
-                new DBUser { Email="ivanbalaban@i.ua", Password="123456"},
-                new DBUser { Email="admin@gmail.com", Password="123456"}
-            };
         }
 
         [HttpGet]
@@ -39,13 +29,9 @@ namespace WebSite.Controllers
         {
             if(ModelState.IsValid)
             {
-                var user = _listUsers
-                    .SingleOrDefault(u=> u.Email==model.Email
-                    && u.Password==model.Password);
-                if (user != null)
+                var status = _accountProvider.Login(model);
+                if (status == StatusAccountViewModel.Success)
                 {
-                    FormsAuthentication
-                        .SetAuthCookie(user.Email, model.IsRememberMe);
                     return RedirectToAction("Index", "Home");
                 }
                 else
@@ -73,7 +59,7 @@ namespace WebSite.Controllers
         }
         public ActionResult Logout()
         {
-            FormsAuthentication.SignOut();
+            _accountProvider.Logout();
             return RedirectToAction("Index", "Home");
         }
     }

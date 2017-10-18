@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using BLL.ViewModel;
 using DAL.Abstract;
 using DAL.Entities;
+using System.Web.Security;
 
 namespace BLL.Concrete
 {
@@ -18,9 +19,31 @@ namespace BLL.Concrete
             _userRepository = userRepository;
         }
 
+        public StatusAccountViewModel Login(LoginViewModel model)
+        {
+            var user = _userRepository.GetUserByEmail(model.Email);
+            if (user != null)
+            {
+                var crypto = new SimpleCrypto.PBKDF2();
+                var password = crypto.Compute(model.Password, user.PasswordSalt);
+                if (password == user.Password)
+                {
+                    FormsAuthentication
+                                .SetAuthCookie(model.Email, model.IsRememberMe);
+                    return StatusAccountViewModel.Success;
+                }
+            }
+            return StatusAccountViewModel.Error;
+        }
+
+        public void Logout()
+        {
+            FormsAuthentication.SignOut(); 
+        }
+
         public StatusAccountViewModel Register(RegisterViewModel model)
         {
-            var userDub=_userRepository.GetUserByEmail(model.Email);
+            var userDub = _userRepository.GetUserByEmail(model.Email);
             if (userDub != null)
             {
                 return StatusAccountViewModel.Dublication;
@@ -35,5 +58,6 @@ namespace BLL.Concrete
 
             return StatusAccountViewModel.Success;
         }
+
     }
 }

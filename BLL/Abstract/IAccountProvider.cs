@@ -10,6 +10,8 @@ namespace BLL.Abstract
     public interface IAccountProvider
     {
         StatusAccountViewModel Register(RegisterViewModel model);
+        StatusAccountViewModel Login(LoginViewModel model);
+        void Logout();
         
     }
 }
