@@ -11,6 +11,7 @@ namespace BLL.Abstract
     {
         StatusAccountViewModel Register(RegisterViewModel model);
         StatusAccountViewModel Login(LoginViewModel model);
+        IEnumerable<string> UserRoles(string email);
         void Logout();
         
     }

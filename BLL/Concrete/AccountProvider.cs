@@ -59,5 +59,10 @@ namespace BLL.Concrete
             return StatusAccountViewModel.Success;
         }
 
+        public IEnumerable<string> UserRoles(string email)
+        {
+            var user= _userRepository.GetUserByEmail(email);
+            return user.Roles.Select(r=>r.Name);
+        }
     }
 }
