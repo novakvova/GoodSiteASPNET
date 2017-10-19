@@ -1,6 +1,10 @@
 ﻿using BLL.Abstract;
+using BLL.Infrastructure.Identity.Service;
 using BLL.ViewModel;
 using Newtonsoft.Json;
+using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.Owin;
+using Microsoft.Owin.Security;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,10 +17,23 @@ namespace WebSite.Controllers
 
     public class AccountController : Controller
     {
+        private SignInService _signInManager;
+        private UserService _userManager;
         private readonly IAccountProvider _accountProvider;
         public AccountController(IAccountProvider accountProvider)
         {
             _accountProvider = accountProvider;
+        }
+        public SignInService SignInManager
+        {
+            get
+            {
+                return _signInManager ?? HttpContext.GetOwinContext().Get<SignInService>();
+            }
+            private set
+            {
+                _signInManager = value;
+            }
         }
 
         [HttpGet]
