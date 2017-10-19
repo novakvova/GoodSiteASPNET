@@ -85,6 +85,7 @@
     <Compile Include="Entities\Country.cs" />
     <Compile Include="Entities\DBInitializer.cs" />
     <Compile Include="Entities\EFContext.cs" />
+    <Compile Include="Entities\Identity\AppRole.cs" />
     <Compile Include="Entities\Identity\AppUser.cs" />
     <Compile Include="Entities\Role.cs" />
     <Compile Include="Entities\User.cs" />
