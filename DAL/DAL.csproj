@@ -105,6 +105,10 @@
     <Compile Include="Migrations\201710191609106_Add Idemtity Tabels.Designer.cs">
       <DependentUpon>201710191609106_Add Idemtity Tabels.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201710231711313_test sss.cs" />
+    <Compile Include="Migrations\201710231711313_test sss.Designer.cs">
+      <DependentUpon>201710231711313_test sss.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -124,6 +128,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201710191609106_Add Idemtity Tabels.resx">
       <DependentUpon>201710191609106_Add Idemtity Tabels.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201710231711313_test sss.resx">
+      <DependentUpon>201710231711313_test sss.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

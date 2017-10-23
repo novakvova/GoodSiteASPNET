@@ -28,7 +28,7 @@ namespace BLL.Concrete
                 .As<ILocationProvider>().InstancePerRequest();
             builder.RegisterType<UserRepository>()
                 .As<IUserRepository>().InstancePerRequest();
-            builder.RegisterType<AccountProvider>()
+            builder.RegisterType<AccountIdentityProvider>()
                 .As<IAccountProvider>().InstancePerRequest();
             
 

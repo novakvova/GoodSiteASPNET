@@ -51,6 +51,9 @@
     <Reference Include="Microsoft.Owin, Version=3.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.Owin.3.1.0\lib\net45\Microsoft.Owin.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.Owin.Host.SystemWeb, Version=3.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Host.SystemWeb.3.1.0\lib\net45\Microsoft.Owin.Host.SystemWeb.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.Owin.Security, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.Owin.Security.2.1.0\lib\net45\Microsoft.Owin.Security.dll</HintPath>
     </Reference>
@@ -83,10 +86,13 @@
   <ItemGroup>
     <Compile Include="Abstract\IAccountProvider.cs" />
     <Compile Include="Abstract\ILocationProvider.cs" />
+    <Compile Include="Concrete\AccountIdentityProvider.cs" />
     <Compile Include="Concrete\DataModule.cs" />
     <Compile Include="Concrete\AccountProvider.cs" />
     <Compile Include="Concrete\LocationProvider.cs" />
+    <Compile Include="Concrete\Startup.cs" />
     <Compile Include="Infrastructure\Identity\Service\EmailService.cs" />
+    <Compile Include="Infrastructure\Identity\Service\MyOptions.cs" />
     <Compile Include="Infrastructure\Identity\Service\RoleService.cs" />
     <Compile Include="Infrastructure\Identity\Service\SignInService.cs" />
     <Compile Include="Infrastructure\Identity\Service\UserService.cs" />
