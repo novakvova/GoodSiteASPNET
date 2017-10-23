@@ -12,6 +12,8 @@ using BLL.Infrastructure.Identity.Service;
 using Microsoft.AspNet.Identity.Owin;
 using System.Web;
 using DAL.Entities.Identity;
+using Microsoft.AspNet.Identity;
+using Microsoft.Owin.Security;
 
 namespace BLL.Concrete
 {
@@ -48,7 +50,13 @@ namespace BLL.Concrete
                 _userManager = value;
             }
         }
-
+        private IAuthenticationManager AuthenticationManager
+        {
+            get
+            {
+                return HttpContext.Current.GetOwinContext().Authentication;
+            }
+        }
 
         public StatusAccountViewModel Login(LoginViewModel model)
         {
@@ -64,7 +72,8 @@ namespace BLL.Concrete
 
         public void Logout()
         {
-            FormsAuthentication.SignOut(); 
+            AuthenticationManager.SignOut(DefaultAuthenticationTypes.ApplicationCookie); 
+            
         }
 
         public StatusAccountViewModel Register(RegisterViewModel model)
