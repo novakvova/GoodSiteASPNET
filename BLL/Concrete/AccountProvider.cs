@@ -8,6 +8,7 @@ using BLL.ViewModel;
 using DAL.Abstract;
 using DAL.Entities;
 using System.Web.Security;
+using Microsoft.AspNet.Identity.Owin;
 
 namespace BLL.Concrete
 {
@@ -17,6 +18,26 @@ namespace BLL.Concrete
         public AccountProvider(IUserRepository userRepository)
         {
             _userRepository = userRepository;
+        }
+
+        public StatusAccountViewModel Create(string email)
+        {
+            throw new NotImplementedException();
+        }
+
+        public StatusAccountViewModel CreateLogin(string email)
+        {
+            throw new NotImplementedException();
+        }
+
+        public SignInStatus ExternalSignIn(ExternalLoginInfo loginInfo, bool isPersistent)
+        {
+            throw new NotImplementedException();
+        }
+
+        public ExternalLoginInfo GetExternalLoginInfo()
+        {
+            throw new NotImplementedException();
         }
 
         public StatusAccountViewModel Login(LoginViewModel model)
@@ -34,6 +55,11 @@ namespace BLL.Concrete
                 }
             }
             return StatusAccountViewModel.Error;
+        }
+
+        public StatusAccountViewModel Login(string login, string password)
+        {
+            throw new NotImplementedException();
         }
 
         public void Logout()
@@ -57,6 +83,16 @@ namespace BLL.Concrete
             _userRepository.SaveChange();
 
             return StatusAccountViewModel.Success;
+        }
+
+        public bool SendTwoFactorCode(string provider)
+        {
+            throw new NotImplementedException();
+        }
+
+        public IList<string> UserFactors()
+        {
+            throw new NotImplementedException();
         }
 
         public IEnumerable<string> UserRoles(string email)

@@ -91,6 +91,7 @@
   <ItemGroup>
     <Compile Include="Abstract\IAccountProvider.cs" />
     <Compile Include="Abstract\ILocationProvider.cs" />
+    <Compile Include="Concrete\AccountHealper.cs" />
     <Compile Include="Concrete\AccountIdentityProvider.cs" />
     <Compile Include="Concrete\DataModule.cs" />
     <Compile Include="Concrete\AccountProvider.cs" />

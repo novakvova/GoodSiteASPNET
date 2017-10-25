@@ -53,6 +53,33 @@ namespace BLL.Concrete
             }
         }
 
+        public StatusAccountViewModel CreateLogin(string email)
+        {
+            var info = AuthenticationManager.GetExternalLoginInfo();
+            var user = new AppUser { UserName = email, Email = email };
+            var result = UserManager.Create(user);
+            if (result.Succeeded)
+            {
+                result = UserManager.AddLogin(user.Id, info.Login);
+                if (result.Succeeded)
+                {
+                    SignInManager.SignIn(user, isPersistent: false, rememberBrowser: false);
+                    return StatusAccountViewModel.Success;
+                }
+            }
+            return StatusAccountViewModel.Error;
+        }
+
+        public SignInStatus ExternalSignIn(ExternalLoginInfo loginInfo, bool isPersistent)
+        {
+            return SignInManager.ExternalSignIn(loginInfo, isPersistent: false);
+        }
+
+        public ExternalLoginInfo GetExternalLoginInfo()
+        {
+            return AuthenticationManager.GetExternalLoginInfo();
+        }
+
         public StatusAccountViewModel Login(LoginViewModel model)
         {
             var result = SignInManager
@@ -64,6 +91,8 @@ namespace BLL.Concrete
             }
             return StatusAccountViewModel.Error;
         }
+
+        
 
         public void Logout()
         {
@@ -85,6 +114,24 @@ namespace BLL.Concrete
 
             return StatusAccountViewModel.Error;
         }
+
+        public bool SendTwoFactorCode(string provider)
+        {
+            return SignInManager.SendTwoFactorCode(provider);
+        }
+
+        public IList<string> UserFactors()
+        {
+            var userId = SignInManager.GetVerifiedUserId();
+            if (userId == null)
+            {
+                return null;
+            }
+            var userFactors = UserManager.GetValidTwoFactorProviders(userId);
+            return userFactors;
+        }
+
+        
 
         public IEnumerable<string> UserRoles(string email)
         {

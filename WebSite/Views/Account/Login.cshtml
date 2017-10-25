@@ -52,6 +52,19 @@
     </div>
 }
 
+<section id="socialLoginForm">
+    @using (Html.BeginForm("ExternalLogin", "Account", new { ReturnUrl = ViewBag.ReturnUrl })) {
+    @Html.AntiForgeryToken()
+    <div id="socialLoginList">
+        <p>
+            @foreach (var p in Model.LoginProviders)
+            {
+                <button type="submit" class="btn btn-default" id="@p.AuthenticationType" name="provider" value="@p.AuthenticationType" title="Log in using your @p.Caption account">@p.AuthenticationType</button>
+            }
+        </p>
+    </div>
+    }
+</section>
 <div>
     @Html.ActionLink("Back to List", "Index")
 </div>

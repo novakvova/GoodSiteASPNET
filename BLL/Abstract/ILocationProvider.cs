@@ -13,5 +13,6 @@ namespace BLL.Abstract
         CountryViewModel Countries(int page, SearchCountryViewModel search);
         StatusCountryViewModel CountryEdit(CountryEditViewModel editCountry);
         CountryEditViewModel GetCountryEditById(int id);
+        
     }
 }

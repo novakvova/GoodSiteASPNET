@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using BLL.ViewModel;
 using DAL.Abstract;
 using DAL.Entities;
+using Microsoft.AspNet.Identity.Owin;
 
 namespace BLL.Concrete
 {
@@ -107,5 +108,7 @@ namespace BLL.Concrete
             }
             return model;
         }
+
+        
     }
 }

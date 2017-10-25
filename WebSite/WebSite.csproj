@@ -207,6 +207,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Helpers\PagingHelpers.cs" />
+    <Compile Include="Models\AccountViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -304,11 +305,11 @@
     <Content Include="Views\Stuardesa\Abort.cshtml" />
     <Content Include="Views\Stuardesa\Preview.cshtml" />
     <Content Include="Views\Shared\_LoginPopup.cshtml" />
+    <Content Include="Views\Account\SendCode.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Admin\Models\" />
-    <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
