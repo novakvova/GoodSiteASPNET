@@ -21,11 +21,6 @@ namespace BLL.Concrete
     {
         private SignInService _signInManager;
         private UserService _userManager;
-        public AccountIdentityProvider(IUserRepository userRepository)
-        {
-            
-            //_userRepository = userRepository;
-        }
 
         public SignInService SignInManager
         {
@@ -73,7 +68,6 @@ namespace BLL.Concrete
         public void Logout()
         {
             AuthenticationManager.SignOut(DefaultAuthenticationTypes.ApplicationCookie); 
-            
         }
 
         public StatusAccountViewModel Register(RegisterViewModel model)
@@ -83,7 +77,7 @@ namespace BLL.Concrete
                 UserName = model.Email,
                 Email = model.Email
             };
-            var result = UserManager.CreateAsync(user, model.Password).Result;
+            var result = UserManager.Create(user, model.Password);
             if (result.Succeeded)
             {
                 return StatusAccountViewModel.Success;

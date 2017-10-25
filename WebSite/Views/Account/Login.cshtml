@@ -5,7 +5,10 @@
 }
 
 <h2>Login</h2>
-
+@foreach(var item in Model.LoginProviders)
+{
+    <span>@item.AuthenticationType</span>
+}
 
 @using (Html.BeginForm()) 
 {

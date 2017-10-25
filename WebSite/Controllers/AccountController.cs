@@ -26,7 +26,8 @@ namespace WebSite.Controllers
         [HttpGet]
         public ActionResult Login()
         {
-            return View();
+            LoginViewModel model = new LoginViewModel();
+            return View(model);
         }
         [HttpPost]
         [ValidateAntiForgeryToken]

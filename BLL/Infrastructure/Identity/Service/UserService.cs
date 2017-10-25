@@ -58,7 +58,7 @@ namespace BLL.Infrastructure.Identity.Service
             if (dataProtectionProvider != null)
             {
                 service.UserTokenProvider =
-                    new DataProtectorTokenProvider<AppUser>(dataProtectionProvider.Create("OBK project security Identity"));
+                    new DataProtectorTokenProvider<AppUser>(dataProtectionProvider.Create("STEP project security Identity"));
             }
             return service;
         }
