@@ -157,6 +157,8 @@ namespace WebSite.Controllers
             if (ModelState.IsValid)
             {
                 // Get the information about the user from the external login provider
+
+                //забрати цей кусочок коду в коллбек і одразу зареєструвати
                 var info = _accountProvider.GetExternalLoginInfo();
                 if (info == null)
                 {
@@ -168,6 +170,7 @@ namespace WebSite.Controllers
                 {
                     return RedirectToLocal(returnUrl);
                 }
+                //-----------------------------------------------------------
             }
 
             ViewBag.ReturnUrl = returnUrl;
