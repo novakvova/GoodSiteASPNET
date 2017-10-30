@@ -23,7 +23,7 @@ namespace WebSite.Controllers
         {
             _accountProvider = accountProvider;
         }
-        
+
         [HttpGet]
         public ActionResult Login()
         {
@@ -135,6 +135,14 @@ namespace WebSite.Controllers
                     return RedirectToAction("SendCode", new { ReturnUrl = returnUrl, RememberMe = false });
                 case SignInStatus.Failure:
                 default:
+
+                    var status = _accountProvider.CreateLogin(loginInfo.Email);
+
+                    if (status == StatusAccountViewModel.Success)
+                    {
+                        return RedirectToLocal(returnUrl);
+                    }
+                    
                     // If the user does not have an account, then prompt the user to create an account
                     ViewBag.ReturnUrl = returnUrl;
                     ViewBag.LoginProvider = loginInfo.Login.LoginProvider;
@@ -165,8 +173,8 @@ namespace WebSite.Controllers
                     return View("ExternalLoginFailure");
                 }
                 var result = _accountProvider.CreateLogin(model.Email);
-                
-                if (result==StatusAccountViewModel.Success)
+
+                if (result == StatusAccountViewModel.Success)
                 {
                     return RedirectToLocal(returnUrl);
                 }
@@ -185,25 +193,25 @@ namespace WebSite.Controllers
         [ValidateAntiForgeryToken]
         public ContentResult LoginPopup(LoginViewModel model)
         {
-            string json="";  int rez = 0;  string message = "";
+            string json = ""; int rez = 0; string message = "";
             if (ModelState.IsValid)
             {
                 var status = _accountProvider.Login(model);
                 if (status == StatusAccountViewModel.Success)
                 {
-                    message="Усе добре";
+                    message = "Усе добре";
                     rez = 1;
                 }
                 else
-                    message= "Не коректні дані!";
+                    message = "Не коректні дані!";
             }
             message = "Валідація";
             json = JsonConvert.SerializeObject(new
             {
-                rez=rez,
-                message=message
+                rez = rez,
+                message = message
             });
-            return Content(json,"application/json");
+            return Content(json, "application/json");
         }
 
         #endregion
@@ -249,5 +257,5 @@ namespace WebSite.Controllers
         }
     }
     // Used for XSRF protection when adding external logins
-    
+
 }

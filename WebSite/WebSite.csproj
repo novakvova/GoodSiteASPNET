@@ -196,6 +196,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
+    <Compile Include="Areas\Admin\Controllers\CompanyController.cs" />
     <Compile Include="Areas\Admin\Controllers\CountryController.cs" />
     <Compile Include="Areas\Admin\Controllers\HomeController.cs" />
     <Compile Include="Areas\Admin\Controllers\LocationController.cs" />
@@ -231,6 +232,8 @@
     <Content Include="Areas\Admin\Scripts\morris\morris-0.4.3.min.css" />
     <Content Include="Areas\Admin\Scripts\morris\morris.js" />
     <Content Include="Areas\Admin\Scripts\morris\raphael-2.1.0.min.js" />
+    <Content Include="Content\bootstrap-chosen\bootstrap-chosen.css" />
+    <Content Include="Content\bootstrap-chosen\chosen-sprite.png" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
@@ -268,9 +271,11 @@
     <Content Include="Areas\Admin\Views\Country\Index.cshtml" />
     <Content Include="Areas\Admin\Views\Country\_Countries.cshtml" />
     <Content Include="Areas\Admin\Views\Country\_Search.cshtml" />
+    <Content Include="Areas\Admin\Views\Company\Create.cshtml" />
     <None Include="Scripts\jquery-3.2.1.intellisense.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Scripts\chosen.jquery.js" />
     <Content Include="Scripts\jquery-3.2.1.js" />
     <Content Include="Scripts\jquery-3.2.1.min.js" />
     <Content Include="Scripts\jquery-3.2.1.slim.js" />

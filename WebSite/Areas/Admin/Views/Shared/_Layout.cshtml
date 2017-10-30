@@ -9,7 +9,7 @@
     <link href="~/Areas/Admin/Content/font-awesome.css" rel="stylesheet" />
     <link href="~/Areas/Admin/Scripts/morris/morris-0.4.3.min.css" rel="stylesheet" />
     <link href="~/Areas/Admin/Content/custom.css" rel="stylesheet" />
-
+    @RenderSection("styles", false)
 </head>
 <body>
     <div id="wrapper">
@@ -107,5 +107,6 @@ font-size: 16px;">Last access : 30 May 2014 &nbsp;<a href="#" class="btn btn-dan
     <script src="~/Areas/Admin/Scripts/morris/raphael-2.1.0.min.js"></script>
     <script src="~/Areas/Admin/Scripts/morris/morris.js"></script>
     <script src="~/Areas/Admin/Scripts/custom.js"></script>
+    @RenderSection("scripts",false)
 </body>
 </html>
